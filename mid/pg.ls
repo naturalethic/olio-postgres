@@ -4,7 +4,6 @@ module.exports = (next) ->*
   for key of @db.model
     try
       this[key] <<< require "#{process.cwd!}/lib/#key"
-      info key
   this <<< @db{exec, first, relate, estrange, related, relation, save, destroy, wrap}
   yield @db.exec 'BEGIN'
   try
