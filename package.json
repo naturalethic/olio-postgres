@@ -1,7 +1,7 @@
 {
   "name": "olio-postgres",
   "version": "0.0.1",
-  "description": "",
+  "description": "olio postgres",
   "repository": {
     "type": "git",
     "url": "git://github.com/naturalethic/olio-postgres"
