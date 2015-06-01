@@ -1,7 +1,6 @@
 compose-environment = (pg) ->
   env = {}
-  if pg
-    env <<< pg{exec, first, relate, related, relation, save, wrap, estrange} <<< pg.model
+  env <<< pg{exec, first, relate, related, relation, save, wrap, estrange} <<< pg.model
   for name, lib of olio.lib
     if env[name]
       env[name] <<< lib
@@ -10,9 +9,8 @@ compose-environment = (pg) ->
         env[name] = lib
       else
         env[name] = {} <<< lib
-      if pg
-        env[name] <<< pg{exec, first, relate, estrange, related, relation, save, destroy, wrap}
-  all-names = (pg and unique((keys olio.lib) ++ (keys pg.model))) or keys olio.lib
+    env[name] <<< pg{exec, first, relate, estrange, related, relation, save, destroy, wrap}
+  all-names = unique((keys olio.lib) ++ (keys pg.model))# ++ <[ exec first relate estrange related relation save destroy wrap ]>)
   for n1 in all-names
     for n2 in all-names
       continue if n1 == n2
